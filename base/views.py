@@ -14,8 +14,9 @@ from .forms import RoomForm
 #     {'id' : 3, 'name' : 'Frontend'},
 # ]
 
-def loginPage(request):
 
+def loginPage(request):
+    page = 'login'
     if request.user.is_authenticated:
         return redirect('home')
 
@@ -39,13 +40,18 @@ def loginPage(request):
 
         
 
-    context = {}
+    context = {'page':page}
     return render(request, 'base/login_register.html', context)
 
 
 def logoutUser(request):
     logout(request)
     return redirect('home')
+
+
+def registerPage(request):
+    page = 'register'
+    return render(request, 'base/login_register.html', )
 
 
 def home(request):
